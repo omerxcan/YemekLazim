@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BitirmeProjesiDeneme2.Models.Malzeme>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Malzeme Seç</h2>
+
+    <!-- Arama Çubuğu -->
+    <div class="mb-3">
+        <input type="text" id="searchInput" class="form-control" placeholder="Malzeme Ara..." onkeyup="filterIngredients()" style="border-radius: 20px;">
+    </div>
+
+    <form asp-action="FindRecipes" method="post">
+        <div class="row" id="ingredientsList">
+            @foreach (var malzeme in Model)
+            {
+                <div class="col-md-4 mb-3 ingredient-item">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="selectedIngredients" value="@malzeme.Id" id="malzeme-@malzeme.Id">
+                                <label class="form-check-label" for="malzeme-@malzeme.Id">
+                                    @malzeme.Ad
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg" style="border-radius: 20px;">Tarifleri Göster</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function filterIngredients() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toLowerCase();
+        const ingredients = document.getElementsByClassName('ingredient-item');
+
+        for (let i = 0; i < ingredients.length; i++) {
+            const label = ingredients[i].getElementsByTagName('label')[0];
+            if (label) {
+                const txtValue = label.textContent || label.innerText;
+                ingredients[i].style.display = txtValue.toLowerCase().indexOf(filter) > -1 ? "" : "none";
+            }
+        }
+    }
+</script>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .card {
+        border-radius: 10px;
+        transition: transform 0.2s;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+</style>

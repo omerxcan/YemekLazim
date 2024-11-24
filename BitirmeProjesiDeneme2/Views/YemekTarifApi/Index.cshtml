@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BitirmeProjesiDeneme2.Models.Tarif>
+
+<h2>API'den Gelen Tarif Listesi</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tarif Adı</th>
+            <th>Resim</th>
+            <th>Detay</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tarif in Model)
+        {
+            <tr>
+                <td>@tarif.Ad</td>
+                <td><img src="#" alt="@tarif.Ad" style="width: 100px; height: auto;" /></td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="YemekTarif" asp-action="Details" asp-route-id="@tarif.Id">Detay</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

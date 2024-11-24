@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Bitirme Projesi</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+    /* Genel font ve renk düzenlemeleri */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    /* Navbar stil düzenlemeleri */
+    .navbar {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        background-color: #ffffff;
+        padding: 1rem 1.5rem;
+    }
+
+    .navbar .nav-link {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #333333;
+        transition: color 0.3s ease;
+        margin-right: 1rem;
+    }
+
+    /* Hover rengi sadeleştirildi */
+    .navbar .nav-link:hover {
+        color: #0056b3; /* Daha koyu mavi ton */
+        background-color: transparent;
+        text-decoration: underline; /* Sadece alt çizgi efekti */
+    }
+
+    /* Üye Ol ve Giriş Yap düğmeleri ortalandı */
+    .navbar .d-flex .nav-link {
+        padding: 0.5rem 1rem;
+    }
+
+    /* Footer stil düzenlemeleri */
+    footer {
+        background-color: #343a40;
+        color: #ffffff;
+        padding: 1.5rem 0;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    /* Ana içerik için kutu gölgesi ve kenar boşlukları */
+    main {
+        background-color: #ffffff;
+        padding: 2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+</style>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">AnaSayfa</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <partial name="_LoginPartial"></partial>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2024 - Bitirme Projesi</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
